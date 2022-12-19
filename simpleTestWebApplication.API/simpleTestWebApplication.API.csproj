@@ -9,6 +9,8 @@
     <ItemGroup>
       <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="6.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
+      <PackageReference Include="Ocelot" Version="18.0.0" />
+      <PackageReference Include="Ocelot.Administration" Version="18.0.0" />
     </ItemGroup>
 
     <ItemGroup>
