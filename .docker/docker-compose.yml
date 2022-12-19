@@ -10,3 +10,9 @@ services:
     environment:
       SA_PASSWORD: ${SQL_DB_PASS}
       ACCEPT_EULA: ${SQL_ELUA}
+    # TODO: 
+    #Identity-service
+    #Gateway
+    #Api-service
+    #front?
+    #Service bus
