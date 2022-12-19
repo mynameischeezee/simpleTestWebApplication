@@ -7,12 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include=".docker\.env" />
-      <Content Include=".docker\.env.default" />
-      <Content Include=".docker\docker-compose.yml" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="6.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
     </ItemGroup>

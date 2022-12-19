@@ -479,5 +479,3 @@ $RECYCLE.BIN/
 
 #Docker env file
 .docker/.env
-/simpleTestWebApplication/.docker/.env
-/simpleTestWebApplication.API/.docker/.env
