@@ -1,6 +1,6 @@
 using Serilog;
 
-namespace simpleTestWebApplication.Identity;
+namespace movieStorage.Identity;
 
 public static class HostingExtensions
 {

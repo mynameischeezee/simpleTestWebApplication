@@ -1,5 +1,5 @@
 ﻿// using Serilog;
-// using simpleTestWebApplication.Identity;
+// using movieStorage.Identity;
 //
 //
 // Log.Logger = new LoggerConfiguration()

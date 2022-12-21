@@ -1,10 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpleTestWebApplication.API", "simpleTestWebApplication.API\simpleTestWebApplication.API.csproj", "{55A2229F-C551-4471-9D7C-CDC5C0A8E9A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.API", "movieStorage.API\movieStorage.API.csproj", "{55A2229F-C551-4471-9D7C-CDC5C0A8E9A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpleTestWebApplication.Identity", "simpleTestWebApplication.Identity\simpleTestWebApplication.Identity.csproj", "{0763EC7A-95F6-497F-97C2-134C12DA0C67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Identity", "movieStorage.Identity\movieStorage.Identity.csproj", "{0763EC7A-95F6-497F-97C2-134C12DA0C67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{4F347B47-35A4-4207-9992-DE1CED541C10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.ApiGateway", "movieStorage.ApiGateway\movieStorage.ApiGateway.csproj", "{4F347B47-35A4-4207-9992-DE1CED541C10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Client", "movieStorage.Client\movieStorage.Client.csproj", "{87D84DB9-766D-41C1-A86C-FCBF04E3406C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,5 +29,9 @@ Global
 		{4F347B47-35A4-4207-9992-DE1CED541C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F347B47-35A4-4207-9992-DE1CED541C10}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F347B47-35A4-4207-9992-DE1CED541C10}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{87D84DB9-766D-41C1-A86C-FCBF04E3406C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87D84DB9-766D-41C1-A86C-FCBF04E3406C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87D84DB9-766D-41C1-A86C-FCBF04E3406C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87D84DB9-766D-41C1-A86C-FCBF04E3406C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
