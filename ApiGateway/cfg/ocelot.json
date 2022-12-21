@@ -1,0 +1,17 @@
+﻿{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5003"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/Gateway/Hello",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamPathTemplate": "/Hello/Test",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{
+        "Host": "localhost",
+        "Port": 5002
+      }]
+    }
+  ]
+}
