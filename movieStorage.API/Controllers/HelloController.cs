@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace simpleTestWebApplication.API.Controllers;
+namespace movieStorage.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
