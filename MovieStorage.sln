@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Identity", "mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.ApiGateway", "movieStorage.ApiGateway\movieStorage.ApiGateway.csproj", "{4F347B47-35A4-4207-9992-DE1CED541C10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Client", "movieStorage.Client\movieStorage.Client.csproj", "{87D84DB9-766D-41C1-A86C-FCBF04E3406C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,9 +27,5 @@ Global
 		{4F347B47-35A4-4207-9992-DE1CED541C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F347B47-35A4-4207-9992-DE1CED541C10}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F347B47-35A4-4207-9992-DE1CED541C10}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{87D84DB9-766D-41C1-A86C-FCBF04E3406C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87D84DB9-766D-41C1-A86C-FCBF04E3406C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87D84DB9-766D-41C1-A86C-FCBF04E3406C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87D84DB9-766D-41C1-A86C-FCBF04E3406C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
