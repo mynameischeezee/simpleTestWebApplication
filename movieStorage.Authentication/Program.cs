@@ -1,4 +1,7 @@
 
+using Microsoft.AspNetCore.Identity;
+using movieStorage.Authentication.Configuration;
+using movieStorage.Authentication.Data.Identity;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -10,9 +13,13 @@ Log.Information("Starting up");
 try
 {
     var builder = WebApplication.CreateBuilder(args);
-    builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+    builder.Services.AddAuthentication();
+    builder.Services.AddAutoMapper(typeof(MapConfiguration));
+    builder.Services.AddIdentity<ServiceUser, IdentityRole>().AddDefaultTokenProviders();
+    builder.Services.AddControllers();
+    
     var app = builder.Build();
     
     if (app.Environment.IsDevelopment())
@@ -20,9 +27,11 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    app.UseAuthentication();
+    app.UseAuthorization();
     app.UseHttpsRedirection();
     app.MapControllers();
-
     app.Run();
 }
 catch (Exception ex)

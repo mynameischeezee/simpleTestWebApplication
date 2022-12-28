@@ -13,7 +13,7 @@ public static class Config
     public static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]
         {
-            new ApiScope(name: "simpleTestWebApplication", displayName: "simpleTestWebApplication.API")
+            new ApiScope(name: "movieStorage.Api", displayName: "movieApi")
         };
 
     public static IEnumerable<Client> Clients =>
