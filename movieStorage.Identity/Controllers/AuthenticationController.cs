@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using movieStorage.Authentication.Models;
-using movieStorage.Authentication.Data.Identity;
+using movieStorage.Identity.Data.Identity;
+using movieStorage.Identity.Models;
 
-namespace movieStorage.Authentication.Controllers;
+
+namespace movieStorage.Identity.Controllers;
 
 [ApiController]
 [Route("auth/[controller]")]
@@ -36,17 +37,18 @@ public class AuthenticationController : ControllerBase
             _logger.LogError($"Model state for {nameof(Register)} is not valid");
             return BadRequest(ModelState);
         }
-
         try
         {
             var user = _mapper.Map<ServiceUser>(userDTO);
-            var result = await _userManager.CreateAsync(user);
-
+            var result = await _userManager.CreateAsync(user, userDTO.Password);
             if (!result.Succeeded)
             {
                 _logger.LogError($"Error while attempting to create a new user. {result.Errors}");
                 return BadRequest("User registration fail.");
             }
+            _logger.LogInformation(
+                $"User {userDTO.Username} with email address {userDTO.Email} registered successfully");
+            return Ok($"User {userDTO.Username} registered successfully");
         }
         catch (Exception e)
         {
@@ -54,8 +56,6 @@ public class AuthenticationController : ControllerBase
             _logger.LogError($"Error message: {e.Message}");
             return Problem($"Something went wrong in {nameof(Register)}", statusCode: 500);
         }
-            
-        return null;
     }
     
     [HttpPost]

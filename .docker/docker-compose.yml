@@ -2,9 +2,9 @@ version: "3.8"
 services:
   sql-server-db:
     container_name: SQLSERVERINSTANCE
-    #for intel chip base image can be changed to:
-    #image: mcr.microsoft.com/mssql/server:2022-latest
-    image: mcr.microsoft.com/azure-sql-edge:latest
+    #for M1 chip base image can be changed to:
+    #image: mcr.microsoft.com/azure-sql-edge:latest
+    image: mcr.microsoft.com/mssql/server:2022-latest 
     ports:
       - "1433:1433"
     environment:

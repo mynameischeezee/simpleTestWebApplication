@@ -1,15 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices.JavaScript;
-using movieStorage.Authentication.Data;
-using movieStorage.Authentication.Data.Enumerations;
+using Duende.IdentityServer.Models;
 
-namespace movieStorage.Authentication.Models;
+namespace movieStorage.Identity.Models;
 
 public class UserDTO
 {
-    
-    
-    public Title UserTitle { get; set; }
+    public string UserTitle { get; set; }
 
     [Required]
     [StringLength(maximumLength: 20,
@@ -46,12 +42,13 @@ public class UserDTO
     public DateTime DateOfBirth { get; set; }
     
     [Required]
-    public Gender Gender { get; set; }
+    public string Gender { get; set; }
 
     [Required]
     [DataType(DataType.Password)]
     [MinLength(8)]
     public string Password { get; set; }
-
-    public Address Address { get; set; }
+    
+    [Required]
+    public IdentityResources.Address Address { get; set; }
 }
