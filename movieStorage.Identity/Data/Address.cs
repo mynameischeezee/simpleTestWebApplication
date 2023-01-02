@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Duende.IdentityServer.Models;
 
-namespace movieStorage.Authentication.Data;
+namespace movieStorage.Identity.Data;
 
-public class Address
+public class Address : IdentityResources.Address
 {
     [Required]
     public string Line1 { get; set; }
