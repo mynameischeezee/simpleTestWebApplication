@@ -1,10 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.API", "movieStorage.API\movieStorage.API.csproj", "{55A2229F-C551-4471-9D7C-CDC5C0A8E9A6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Identity", "movieStorage.Identity\movieStorage.Identity.csproj", "{0763EC7A-95F6-497F-97C2-134C12DA0C67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.ApiGateway", "movieStorage.ApiGateway\movieStorage.ApiGateway.csproj", "{4F347B47-35A4-4207-9992-DE1CED541C10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{4E52681D-E187-436A-A316-F9C4599E85EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{F46A814C-545D-4C41-902C-9D9B658D18EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{B573D1D5-9B7B-4CAA-A59A-DC1602A35CCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Web", "movieStorage.Web\movieStorage.Web.csproj", "{4C952B65-72CA-49AD-B6DA-954BF713CB12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,11 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{55A2229F-C551-4471-9D7C-CDC5C0A8E9A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55A2229F-C551-4471-9D7C-CDC5C0A8E9A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55A2229F-C551-4471-9D7C-CDC5C0A8E9A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55A2229F-C551-4471-9D7C-CDC5C0A8E9A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55A2229F-C551-4471-9D7C-CDC5C0A8E9A6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{0763EC7A-95F6-497F-97C2-134C12DA0C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0763EC7A-95F6-497F-97C2-134C12DA0C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0763EC7A-95F6-497F-97C2-134C12DA0C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,5 +28,14 @@ Global
 		{4F347B47-35A4-4207-9992-DE1CED541C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F347B47-35A4-4207-9992-DE1CED541C10}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F347B47-35A4-4207-9992-DE1CED541C10}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4C952B65-72CA-49AD-B6DA-954BF713CB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C952B65-72CA-49AD-B6DA-954BF713CB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C952B65-72CA-49AD-B6DA-954BF713CB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C952B65-72CA-49AD-B6DA-954BF713CB12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4F347B47-35A4-4207-9992-DE1CED541C10} = {B573D1D5-9B7B-4CAA-A59A-DC1602A35CCE}
+		{0763EC7A-95F6-497F-97C2-134C12DA0C67} = {F46A814C-545D-4C41-902C-9D9B658D18EF}
+		{4C952B65-72CA-49AD-B6DA-954BF713CB12} = {4E52681D-E187-436A-A316-F9C4599E85EE}
 	EndGlobalSection
 EndGlobal

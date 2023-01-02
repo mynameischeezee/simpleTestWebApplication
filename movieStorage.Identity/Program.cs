@@ -1,42 +1,62 @@
-﻿// using Serilog;
-// using movieStorage.Identity;
-//
-//
-// Log.Logger = new LoggerConfiguration()
-//     .WriteTo.Console()
-//     .CreateBootstrapLogger();
-//
-// Log.Information("Starting up");
-//
-// try
-// {
-//     var builder = WebApplication.CreateBuilder(args);
-//
-//     builder.Host.UseSerilog((ctx, lc) => lc
-//         .WriteTo.Console(
-//             outputTemplate:
-//             "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
-//         .Enrich.FromLogContext()
-//         .ReadFrom.Configuration(ctx.Configuration));
-//
-//     var app = builder
-//         .ConfigureServices()
-//         .ConfigurePipeline();
-//
-//     app.Run();
-// }
-// catch (Exception ex)
-// {
-//     Log.Fatal(ex, "Unhandled exception");
-// }
-// finally
-// {
-//     Log.Information("Shut down complete");
-//     Log.CloseAndFlush();
-// }
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Serilog;
+using movieStorage.Identity;
+using movieStorage.Identity.Configuration;
+using movieStorage.Identity.Data.Identity;
+using movieStorage.Identity.ServiceContext;
 
-app.MapGet("/", () => "Identity");
 
-app.Run();
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
+
+Log.Information("Starting up");
+
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
+    var configuration = builder.Configuration;
+    builder.Services
+        .AddEndpointsApiExplorer()
+        .AddSwaggerGen()
+        .AddAuthentication();
+    builder.Services.AddAutoMapper(typeof(MapConfiguration));
+    builder.Services.AddIdentity<ServiceUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
+    builder.Services.AddControllers();
+    builder.Services.AddDbContext<IdentityContext>(options =>
+        options.UseSqlServer(configuration.GetConnectionString("IdentityConnectionString")));
+    
+    builder.Host.UseSerilog((ctx, lc) => lc
+        .WriteTo.Console(
+            outputTemplate:
+            "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+        .Enrich.FromLogContext()
+        .ReadFrom.Configuration(ctx.Configuration));
+    
+    var app = builder
+        .ConfigureServices()
+        .ConfigurePipeline();
+    
+    
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.UseHttpsRedirection();
+    app.MapControllers();
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Unhandled exception");
+}
+finally
+{
+    Log.Information("Shut down complete");
+    Log.CloseAndFlush();
+}

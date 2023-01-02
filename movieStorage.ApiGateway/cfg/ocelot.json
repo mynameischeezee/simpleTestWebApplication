@@ -4,14 +4,19 @@
   },
   "Routes": [
     {
-      "UpstreamPathTemplate": "/Gateway/Hello",
-      "UpstreamHttpMethod": ["Get"],
-      "DownstreamPathTemplate": "/Hello/Test",
+      "UpstreamPathTemplate": "/swagger/index.html",
+      "DownstreamPathTemplate": "/swagger/index.html",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [{
         "Host": "localhost",
-        "Port": 5002
-      }]
+        "Port": 5001
+      }],
+      "HttpHandlerOptions": {
+        "AllowAutoRedirect": true,
+        "UseCookieContainer": true,
+        "UseTracing": true,
+        "MaxConnectionsPerServer": 100
+      }
     }
   ]
 }
