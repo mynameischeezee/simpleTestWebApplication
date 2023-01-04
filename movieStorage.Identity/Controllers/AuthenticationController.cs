@@ -1,14 +1,16 @@
-﻿using AutoMapper;
+﻿
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using movieStorage.Identity.Data.Identity;
+using movieStorage.Identity.Exceptions;
+using movieStorage.Identity.Filters;
 using movieStorage.Identity.Models;
-
 
 namespace movieStorage.Identity.Controllers;
 
 [ApiController]
-[Route("auth/[controller]")]
+[Route("[controller]")]
 public class AuthenticationController : ControllerBase
 {
     private readonly UserManager<ServiceUser> _userManager;
@@ -28,34 +30,22 @@ public class AuthenticationController : ControllerBase
     }
     
     [HttpPost]
+    [RegistrationActionFilter]
+    [RegistrationErrorFilter]
     [Route("~/register")]
-    public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
-    {
-        _logger.LogInformation($"Attempting to register user {userDTO.Username} with email address {userDTO.Email}");
+    public async Task<IActionResult> Register([Microsoft.AspNetCore.Mvc.FromBody] UserDTO userDTO)
+    { 
         if (!ModelState.IsValid)
         {
-            _logger.LogError($"Model state for {nameof(Register)} is not valid");
-            return BadRequest(ModelState);
+            throw new ModelInvalidException(ModelState.ToString());
         }
-        try
+        var user = _mapper.Map<ServiceUser>(userDTO);
+        var result = await _userManager.CreateAsync(user, userDTO.Password);
+        if (!result.Succeeded)
         {
-            var user = _mapper.Map<ServiceUser>(userDTO);
-            var result = await _userManager.CreateAsync(user, userDTO.Password);
-            if (!result.Succeeded)
-            {
-                _logger.LogError($"Error while attempting to create a new user. {result.Errors}");
-                return BadRequest("User registration fail.");
-            }
-            _logger.LogInformation(
-                $"User {userDTO.Username} with email address {userDTO.Email} registered successfully");
-            return Ok($"User {userDTO.Username} registered successfully");
+            throw new RegistrationFailedException(result.Errors);
         }
-        catch (Exception e)
-        {
-            _logger.LogError($"Something went wrong in {nameof(Register)}");
-            _logger.LogError($"Error message: {e.Message}");
-            return Problem($"Something went wrong in {nameof(Register)}", statusCode: 500);
-        }
+        return Ok($"User {userDTO.Username} registered successfully");
     }
     
     [HttpPost]

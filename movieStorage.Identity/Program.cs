@@ -12,51 +12,37 @@ Log.Logger = new LoggerConfiguration()
     .CreateBootstrapLogger();
 
 Log.Information("Starting up");
+var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
+builder.Services.AddControllers();
+builder.Services.AddDbContext<IdentityContext>(options =>
+    options.UseSqlServer(configuration.GetConnectionString("IdentityConnectionString")));
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddAuthentication();
+builder.Services.AddAutoMapper(typeof(MapConfiguration));
+builder.Services.AddIdentity<ServiceUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
 
-try
-{
-    var builder = WebApplication.CreateBuilder(args);
-    var configuration = builder.Configuration;
-    builder.Services
-        .AddEndpointsApiExplorer()
-        .AddSwaggerGen()
-        .AddAuthentication();
-    builder.Services.AddAutoMapper(typeof(MapConfiguration));
-    builder.Services.AddIdentity<ServiceUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
-    builder.Services.AddControllers();
-    builder.Services.AddDbContext<IdentityContext>(options =>
-        options.UseSqlServer(configuration.GetConnectionString("IdentityConnectionString")));
-    
-    builder.Host.UseSerilog((ctx, lc) => lc
-        .WriteTo.Console(
-            outputTemplate:
-            "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
-        .Enrich.FromLogContext()
-        .ReadFrom.Configuration(ctx.Configuration));
-    
-    var app = builder
-        .ConfigureServices()
-        .ConfigurePipeline();
-    
-    
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console(
+        outputTemplate:
+        "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+    .Enrich.FromLogContext()
+    .ReadFrom.Configuration(ctx.Configuration));
 
-    app.UseAuthentication();
-    app.UseAuthorization();
-    app.UseHttpsRedirection();
-    app.MapControllers();
-    app.Run();
-}
-catch (Exception ex)
+var app = builder
+    .ConfigureServices()
+    .ConfigurePipeline();
+
+
+if (app.Environment.IsDevelopment())
 {
-    Log.Fatal(ex, "Unhandled exception");
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
-finally
-{
-    Log.Information("Shut down complete");
-    Log.CloseAndFlush();
-}
+
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseHttpsRedirection();
+app.MapControllers();
+app.Run();
