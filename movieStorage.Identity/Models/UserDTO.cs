@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Duende.IdentityServer.Models;
+using movieStorage.Identity.Data;
 
 namespace movieStorage.Identity.Models;
 
@@ -38,7 +38,7 @@ public class UserDTO
     public string PlaceOfBirth { get; set; }
     
     [Required]
-    [DataType(DataType.Date)]
+    [DataType(DataType.DateTime)]
     public DateTime DateOfBirth { get; set; }
     
     [Required]
@@ -48,7 +48,10 @@ public class UserDTO
     [DataType(DataType.Password)]
     [MinLength(8)]
     public string Password { get; set; }
+
+    [DataType(DataType.PhoneNumber)]
+    public string PhoneNumber { get; set; } 
     
     [Required]
-    public IdentityResources.Address Address { get; set; }
+    public Address Address { get; set; }
 }
