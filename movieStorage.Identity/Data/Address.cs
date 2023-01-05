@@ -3,7 +3,7 @@ using Duende.IdentityServer.Models;
 
 namespace movieStorage.Identity.Data;
 
-public class Address : IdentityResources.Address
+public class Address
 {
     [Required]
     public string Line1 { get; set; }
@@ -21,5 +21,6 @@ public class Address : IdentityResources.Address
     public string PostCode { get; set; }
     
     [Required]
+    [MaxLength(4)]
     public string CountryCode { get; set; } 
 }
