@@ -33,7 +33,7 @@ public class AuthenticationController : ControllerBase
     [RegistrationActionFilter]
     [RegistrationErrorFilter]
     [Route("~/register")]
-    public async Task<IActionResult> Register([Microsoft.AspNetCore.Mvc.FromBody] UserDTO userDTO)
+    public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
     { 
         if (!ModelState.IsValid)
         {
