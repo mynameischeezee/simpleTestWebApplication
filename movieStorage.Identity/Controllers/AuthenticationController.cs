@@ -1,7 +1,9 @@
 ﻿
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using movieStorage.Identity.Commands;
 using movieStorage.Identity.Data.Identity;
 using movieStorage.Identity.Exceptions;
 using movieStorage.Identity.Filters;
@@ -13,20 +15,11 @@ namespace movieStorage.Identity.Controllers;
 [Route("[controller]")]
 public class AuthenticationController : ControllerBase
 {
-    private readonly UserManager<ServiceUser> _userManager;
-    private readonly SignInManager<ServiceUser> _signInManager;
-    private readonly ILogger<AuthenticationController> _logger;
-    private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
     
-    public AuthenticationController(UserManager<ServiceUser> userManager,
-        SignInManager<ServiceUser> signInManager,
-        ILogger<AuthenticationController> logger,
-        IMapper mapper)
+    public AuthenticationController(IMediator mediator)
     {
-        _userManager = userManager;
-        _signInManager = signInManager;
-        _logger = logger;
-        _mapper = mapper;
+        _mediator = mediator;
     }
     
     [HttpPost]
@@ -34,18 +27,10 @@ public class AuthenticationController : ControllerBase
     [RegistrationErrorFilter]
     [Route("~/register")]
     public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
-    { 
-        if (!ModelState.IsValid)
-        {
-            throw new ModelInvalidException(ModelState.ToString());
-        }
-        var user = _mapper.Map<ServiceUser>(userDTO);
-        var result = await _userManager.CreateAsync(user, userDTO.Password);
-        if (!result.Succeeded)
-        {
-            throw new RegistrationFailedException(result.Errors);
-        }
-        return Ok($"User {userDTO.Username} registered successfully");
+    {
+        var command = new RegisterUserCommand(userDTO);
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
     
     [HttpPost]
