@@ -1,16 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using movieStorage.Identity.Commands;
-using movieStorage.Identity.Data;
-using movieStorage.Identity.Data.Identity;
-using movieStorage.Identity.Handlers;
-using movieStorage.Identity.Models;
-using movieStorage.Identity.Responses;
-using movieStorage.Identity.Tests.AuthenticationTests.Mocks;
-
-namespace movieStorage.Identity.Tests.AuthenticationTests;
+﻿namespace movieStorage.Identity.Tests.AuthenticationTests;
 
 public class RegistrationTests
 {

@@ -110,4 +110,10 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\README.md" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+        <InternalsVisibleTo Include="$(AssemblyName).IntegrationTests" />
+
+    </ItemGroup>
 </Project>

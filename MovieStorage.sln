@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Web", "movieSt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Identity.Tests", "movieStorage.Identity.Tests\movieStorage.Identity.Tests.csproj", "{C1C0B752-E019-4C0A-A438-3CA89CAF3780}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Identity.IntegrationTests", "movieStorage.Identity.IntegrationTests\movieStorage.Identity.IntegrationTests.csproj", "{F0EDB043-04BC-4719-845B-D89ABA897E80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,11 +40,16 @@ Global
 		{C1C0B752-E019-4C0A-A438-3CA89CAF3780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1C0B752-E019-4C0A-A438-3CA89CAF3780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1C0B752-E019-4C0A-A438-3CA89CAF3780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0EDB043-04BC-4719-845B-D89ABA897E80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0EDB043-04BC-4719-845B-D89ABA897E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0EDB043-04BC-4719-845B-D89ABA897E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0EDB043-04BC-4719-845B-D89ABA897E80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4F347B47-35A4-4207-9992-DE1CED541C10} = {B573D1D5-9B7B-4CAA-A59A-DC1602A35CCE}
 		{0763EC7A-95F6-497F-97C2-134C12DA0C67} = {F46A814C-545D-4C41-902C-9D9B658D18EF}
 		{4C952B65-72CA-49AD-B6DA-954BF713CB12} = {4E52681D-E187-436A-A316-F9C4599E85EE}
 		{C1C0B752-E019-4C0A-A438-3CA89CAF3780} = {F46A814C-545D-4C41-902C-9D9B658D18EF}
+		{F0EDB043-04BC-4719-845B-D89ABA897E80} = {F46A814C-545D-4C41-902C-9D9B658D18EF}
 	EndGlobalSection
 EndGlobal
