@@ -152,7 +152,7 @@ public class RegistrationIntegrationTests
     }
 
     [Test]
-    public async Task RegisterUser_ShouldReturnNotFound_WhenPassDataInRegisterUrl()
+    public async Task RegisterUser_ShouldReturnBadRequest_WhenPassDataInRegisterUrl()
     {
         var testUser = new UserDTO();
         var testUrl = _url + 
