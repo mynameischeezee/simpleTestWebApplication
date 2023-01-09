@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using movieStorage.Identity;
@@ -22,6 +23,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication();
 builder.Services.AddAutoMapper(typeof(MapConfiguration));
 builder.Services.AddIdentity<ServiceUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
+builder.Services.AddMediatR(typeof(Program));
 
 builder.Host.UseSerilog((ctx, lc) => lc
     .WriteTo.Console(
