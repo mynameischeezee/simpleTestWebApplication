@@ -150,15 +150,28 @@ public class RegistrationIntegrationTests
 
         Assert.That(actualStatusCode, Is.EqualTo(expectedStatusCode));
     }
-    
+
     [Test]
-    public async Task RegisterUser_ShouldReturnNotFound_WhenPassDataInRegisterUrl()
+    public async Task RegisterUser_ShouldReturnBadRequest_WhenPassDataInRegisterUrl()
     {
         var testUser = new UserDTO();
-        var testUrl = $"{testUser}/newUser";
+        var testUrl = _url + 
+                      "?userTitle=testUser" +
+                      "&username=test&firstname=test" +
+                      "&lastName=test&middleName=test&email=user@example.com" +
+                      "&placeOfBirth=test&dateOfBirth=2023-01-05T11:15:46.841Z" +
+                      "&gender=test" +
+                      "&password=t3$tP@ssw0rd" +
+                      "&phoneNumber=string" +
+                      "&address[line1]=test" +
+                      "&address[line2]=test" +
+                      "&address[town]=test" +
+                      "&address[country]=test" +
+                      "&address[postCode]=test" +
+                      "&address[countryCode]=test";
         var response = await _httpClient.PostAsJsonAsync(testUrl, testUser);
         
-        var expectedStatusCode = HttpStatusCode.NotFound;
+        var expectedStatusCode = HttpStatusCode.BadRequest;
         var actualStatusCode = response.StatusCode;
 
         Assert.That(actualStatusCode, Is.EqualTo(expectedStatusCode));
