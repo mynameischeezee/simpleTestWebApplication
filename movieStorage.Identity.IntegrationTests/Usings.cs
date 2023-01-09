@@ -1,0 +1,10 @@
+global using System.Net.Http;
+global using System.Threading.Tasks;
+global using Microsoft.AspNetCore.Mvc.Testing;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using movieStorage.Identity.Data;
+global using movieStorage.Identity.Models;
+global using NUnit.Framework;
+global using System.Net.Http.Json;

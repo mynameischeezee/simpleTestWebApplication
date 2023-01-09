@@ -1,6 +1,12 @@
 global using NUnit.Framework;
-global using movieStorage.Identity.Controllers;
-global using movieStorage.Identity.Configuration;
 global using movieStorage.Identity.Exceptions;
 global using Moq;
 global using AutoMapper;
+global using MediatR;
+global using Microsoft.AspNetCore.Identity;
+global using movieStorage.Identity.Commands;
+global using movieStorage.Identity.Data;
+global using movieStorage.Identity.Data.Identity;
+global using movieStorage.Identity.Handlers;
+global using movieStorage.Identity.Models;
+global using movieStorage.Identity.Tests.AuthenticationTests.Mocks;
