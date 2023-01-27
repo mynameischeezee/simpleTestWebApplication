@@ -1,6 +1,9 @@
-﻿namespace moviesStorage.IdentityService.Commands;
+﻿using MediatR;
+using moviesStorage.IdentityService.Responses;
 
-public class LoginUserCommand
+namespace moviesStorage.IdentityService.Commands;
+
+public class LoginUserCommand : IRequest<LoginUserResponse>
 {
     
 }

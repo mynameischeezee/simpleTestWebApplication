@@ -21,12 +21,14 @@ public class MapConfiguration : Profile
             .ForMember(x=> x.Line2, opt => opt.MapFrom(dto => dto.Address.Line2))
             .ForMember(x=> x.Town, opt => opt.MapFrom(dto => dto.Address.Town))
             .ForMember(x=> x.CountryCode, opt => opt.MapFrom(dto => dto.Address.CountryCode))
+            .ForMember(x=> x.Status, opt => opt.MapFrom(dto => dto.Status.ToString()))
             .ReverseMap();
 
         CreateMap<ServiceUser, RegisterUserResponse>()
             .ForMember(x => x.Id, opt => opt.MapFrom(u => u.Id))
             .ForMember(x => x.Username, opt => opt.MapFrom(u => u.UserName))
-            .ForMember(x => x.Email, opt => opt.MapFrom(u => u.Email));
+            .ForMember(x => x.Email, opt => opt.MapFrom(u => u.Email))
+            .ForMember(x => x.Status, opt => opt.MapFrom(u => u.Status));
 
     }
 }
