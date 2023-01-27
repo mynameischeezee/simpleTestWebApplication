@@ -29,4 +29,6 @@ public class ServiceUser : IdentityUser
     public string PostCode { get; set; }
     
     public string CountryCode { get; set; } 
+    
+    public string Status { get; set; }
 }

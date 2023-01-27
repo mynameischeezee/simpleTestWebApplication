@@ -54,4 +54,6 @@ public class UserDTO
     
     [Required]
     public Address Address { get; set; }
+
+    public UserStatus Status { get; set; } = UserStatus.Active;
 }
