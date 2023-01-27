@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using movieStorage.Registration.Data;
+using moviesStorage.IdentityService.Data;
 
-namespace movieStorage.Registration.Models;
+namespace moviesStorage.IdentityService.Models;
 
 public class UserDTO
 {
@@ -54,6 +54,4 @@ public class UserDTO
     
     [Required]
     public Address Address { get; set; }
-
-    public UserStatus Status { get; set; } = UserStatus.Active;
 }

@@ -32,18 +32,4 @@ public class AuthenticationController : ControllerBase
         var result = await _mediator.Send(command);
         return Ok(result);
     }
-    
-    [HttpPost]
-    [Route("~/login")]
-    public async Task<IActionResult> Login()
-    {
-        return null;
-    }
-    
-    [HttpGet]
-    [Route("/logout")]
-    public async Task<IActionResult> Logout()
-    {
-        return null;
-    }
 }
