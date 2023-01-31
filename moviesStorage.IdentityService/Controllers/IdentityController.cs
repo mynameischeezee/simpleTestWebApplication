@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using moviesStorage.IdentityService.Commands;
+using moviesStorage.IdentityService.Filters.LoginFilters;
+using moviesStorage.IdentityService.Filters.LogoutFilters;
 using moviesStorage.IdentityService.Queries;
 
 namespace moviesStorage.IdentityService.Controllers;
@@ -17,15 +19,19 @@ public class IdentityController : ControllerBase
     }
     
     [HttpPost]
+    [LoginActionFilter]
+    [LoginErrorFilter]
     [Route("~/login")]
-    public async Task<IActionResult> Login()
+    public async Task<IActionResult> Login([FromBody] string username, [FromBody] string password)
     {
-        var command = new LoginUserCommand();
+        var command = new LoginUserCommand(username, password);
         var result = await _mediator.Send(command);
         return Ok(result);
     }
     
     [HttpGet]
+    [LogoutActionFilter]
+    [LogoutErrorFilter]
     [Route("~/logout")]
     public async Task<IActionResult> Logout()
     {

@@ -31,9 +31,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Exceptions\LoginExceptions" />
       <Folder Include="Exceptions\LogoutExceptions" />
-      <Folder Include="Filters\LoginFilters" />
-      <Folder Include="Filters\LogoutFilters" />
     </ItemGroup>
 </Project>
