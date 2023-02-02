@@ -16,6 +16,7 @@ public static class HostingExtensions
         builder.Services.AddControllers();
         builder.Services.AddDbContext<IdentityContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("IdentityConnectionString")));
+        Log.Information($"Connection string is: " + configuration.GetConnectionString("IdentityConnectionString"));
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddAuthentication();

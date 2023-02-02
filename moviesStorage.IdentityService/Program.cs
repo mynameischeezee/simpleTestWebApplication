@@ -17,9 +17,7 @@ builder
     .ReadFrom.Configuration(ctx.Configuration));
 
 var app = builder
-    .ConfigureIdentityServer()
     .ConfigureServices()
-    .ConfigurePipeline()
-    .ConfigureIdentityServerPipeline();
+    .ConfigurePipeline();
 
 app.Run();

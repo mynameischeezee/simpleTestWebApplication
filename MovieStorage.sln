@@ -20,6 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registratio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityService", "IdentityService", "{8527282D-0B90-4E32-AA3D-B9C229B33410}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docker", ".docker", "{E4C329F5-BB57-4E34-B059-FD1630CE5FDC}"
+	ProjectSection(SolutionItems) = preProject
+		.docker\docker-compose.yml = .docker\docker-compose.yml
+		.docker\.env.default = .docker\.env.default
+		.docker\.env = .docker\.env
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

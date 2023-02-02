@@ -12,7 +12,7 @@ public class RegistrationIntegrationTests
     [SetUp]
     public void Setup()
     {
-        var webAppFactory = new WebApplicationFactory<Program>()
+        var webAppFactory = new WebApplicationFactory<RegistrationIntegrationTests>()
             .WithWebHostBuilder(builder =>
             {
                 builder.ConfigureServices(services =>
