@@ -6,12 +6,12 @@ namespace movieStorage.Registration.Filters;
 
 public class RegistrationActionFilter : ActionFilterAttribute
 {
-    public override void OnActionExecuting(ActionExecutingContext actionContext)
+    public override void OnActionExecuting(ActionExecutingContext context)
     {
-        var userDTO = actionContext.ActionArguments.FirstOrDefault(u => u.Value.GetType() == typeof(UserDTO))
+        var userDTO = context.ActionArguments.FirstOrDefault(u => u.Value.GetType() == typeof(UserDTO))
             .Value as UserDTO; 
         Log.Information($"Attempting to register user: {userDTO.Username} with email address: {userDTO.Email}");
-        base.OnActionExecuting(actionContext);
+        base.OnActionExecuting(context);
     }
 
     public override void OnActionExecuted(ActionExecutedContext actionContext)

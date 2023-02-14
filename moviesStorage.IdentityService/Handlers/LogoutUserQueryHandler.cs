@@ -5,7 +5,7 @@ using moviesStorage.IdentityService.Data.Identity;
 using moviesStorage.IdentityService.Queries;
 using moviesStorage.IdentityService.Responses;
 
-namespace movieStorage.Registration.Handlers;
+namespace moviesStorage.IdentityService.Handlers;
 
 public class LogoutUserQueryHandler : IRequestHandler<LogoutUserQuery, LogoutUserResponse>
 {
