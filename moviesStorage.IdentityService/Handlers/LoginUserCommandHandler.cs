@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Duende.AccessTokenManagement.OpenIdConnect;
+using Duende.IdentityServer.ResponseHandling;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using moviesStorage.IdentityService.Commands;
@@ -14,12 +16,13 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUs
     private readonly UserManager<ServiceUser> _userManager;
     private readonly SignInManager<ServiceUser> _signInManager;
     private readonly IMapper _mapper;
+    private readonly ITokenResponseGenerator _tokenResponseGenerator;
 
-    public LoginUserCommandHandler(SignInManager<ServiceUser> signInManager, IMapper mapper, UserManager<ServiceUser> userManager)
-    {
+    public LoginUserCommandHandler(SignInManager<ServiceUser> signInManager, IMapper mapper, UserManager<ServiceUser> userManager, ITokenResponseGenerator tokenResponseGenerator) {
         _signInManager = signInManager;
         _mapper = mapper;
         _userManager = userManager;
+        _tokenResponseGenerator = tokenResponseGenerator;
     }
 
     public async Task<LoginUserResponse> Handle(LoginUserCommand request, CancellationToken cancellationToken)
@@ -39,7 +42,6 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUs
         {
             throw new WrongCredentialsException();
         }
-
         var response = new LoginUserResponse()
         {
             

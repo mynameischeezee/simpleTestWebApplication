@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Duende.IdentityServer.Models;
 using moviesStorage.IdentityService.Data.Identity;
 using moviesStorage.IdentityService.Models;
+using moviesStorage.IdentityService.Responses;
 
 namespace moviesStorage.IdentityService.Configuration;
 
@@ -21,5 +23,7 @@ public class MapConfiguration : Profile
             .ForMember(x => x.Town, opt => opt.MapFrom(dto => dto.Address.Town))
             .ForMember(x => x.CountryCode, opt => opt.MapFrom(dto => dto.Address.CountryCode))
             .ReverseMap();
+
+        CreateMap<UserSession, UserSessionResponse>().ReverseMap();
     }
 }

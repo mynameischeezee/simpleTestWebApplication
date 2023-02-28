@@ -1,8 +1,8 @@
-﻿using movieStorage.Registration.Data.Identity;
-using movieStorage.Registration.Repository.Abstraction;
-using movieStorage.Registration.ServiceContext;
+﻿using moviesStorage.IdentityService.Data.Identity;
+using moviesStorage.IdentityService.Repository.Abstraction;
+using moviesStorage.IdentityService.ServiceContext;
 
-namespace movieStorage.Registration.Repository;
+namespace moviesStorage.IdentityService.Repository;
 
 public class UnitOfWork : IUnitOfWork
 {

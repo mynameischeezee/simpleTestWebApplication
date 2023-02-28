@@ -1,6 +1,6 @@
 ﻿namespace moviesStorage.IdentityService.Responses;
 
-public class LoginUserResponse
+public class LoginUserResponse : ApiCallResponseBase
 {
-    public string AccessToken { get; set; }
+    
 }

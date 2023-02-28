@@ -38,6 +38,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <InternalsVisibleTo Include="moviesStorage.IdentityService.IntegrationTests" />
+    </ItemGroup>
+    
+    <ItemGroup>
       <Folder Include="Exceptions\LogoutExceptions" />
     </ItemGroup>
 </Project>

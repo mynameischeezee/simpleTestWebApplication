@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace movieStorage.Registration.Repository.Abstraction;
+namespace moviesStorage.IdentityService.Repository.Abstraction;
 
 public interface IGenericRepository<T> where T : class
 {

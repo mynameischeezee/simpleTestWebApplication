@@ -1,6 +1,6 @@
-﻿using movieStorage.Registration.Data.Identity;
+﻿using moviesStorage.IdentityService.Data.Identity;
 
-namespace movieStorage.Registration.Repository.Abstraction;
+namespace moviesStorage.IdentityService.Repository.Abstraction;
 
 public interface IUnitOfWork : IDisposable
 {

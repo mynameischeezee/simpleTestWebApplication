@@ -22,7 +22,6 @@ public class LogoutUserQueryHandler : IRequestHandler<LogoutUserQuery, LogoutUse
     {
         await _signInManager.SignOutAsync();
         var response = new LogoutUserResponse();
-
         return response;
     }
 }

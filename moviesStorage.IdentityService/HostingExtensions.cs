@@ -1,8 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using moviesStorage.IdentityService.Configuration;
 using moviesStorage.IdentityService.Data.Identity;
+using moviesStorage.IdentityService.Repository;
+using moviesStorage.IdentityService.Repository.Abstraction;
 using moviesStorage.IdentityService.ServiceContext;
 using Serilog;
 
@@ -22,7 +25,24 @@ internal static class HostingExtensions
 
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddAuthentication();
+        builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultChallengeScheme = "duende";
+            })
+            .AddOpenIdConnect("duende", "IdentityServer", options =>
+            {
+                options.Authority = "https://localhost:5002";
+                options.ClientId = "Test";
+            
+                options.ResponseType = "id_token";
+                options.ResponseMode = "query";
+                options.SaveTokens = true;
+
+                options.Scope.Clear();
+                options.Scope.Add("openid");
+                options.Scope.Add("api");
+                options.Scope.Add("offline_access");
+            });
 
         builder.Services.AddAuthorization();
         
@@ -32,21 +52,32 @@ internal static class HostingExtensions
             .AddEntityFrameworkStores<IdentityContext>()
             .AddDefaultTokenProviders();
 
-        builder.Services.AddIdentityServer()
+        builder.Services.AddIdentityServer(options => {
+                options.ServerSideSessions.UserDisplayNameClaimType = "email";
+                options.Authentication.CookieLifetime = TimeSpan.FromMinutes(1);
+                options.Authentication.CoordinateClientLifetimesWithUserSession = true;
+                
+            })
             .AddAspNetIdentity<ServiceUser>()
             .AddInMemoryIdentityResources(Config.IdentityResources)
+            .AddInMemoryApiResources(Config.ApiResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
             .AddInMemoryClients(Config.Clients)
-            .AddDeveloperSigningCredential();
-
+            .AddDeveloperSigningCredential()
+            .AddServerSideSessions();
         builder.Services.ConfigureApplicationCookie(options =>
         {
-            options.Cookie.Name = "Identity.Cookie";
+            options.Cookie.Name = "My.Identity.Cookie";
             options.LoginPath = "/login";
             options.LogoutPath = "/logout";
+            options.ExpireTimeSpan = TimeSpan.FromSeconds(3);
         });
         
         builder.Services.AddMediatR(typeof(Program));
+
+        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+        builder.Services.AddScoped<IGenericRepository<ServiceUser>, GenericRepository<ServiceUser>>();
+        
         return builder.Build();
     }
     

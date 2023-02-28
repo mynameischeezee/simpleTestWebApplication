@@ -1,6 +1,6 @@
 ﻿namespace moviesStorage.IdentityService.Responses;
 
-public class LogoutUserResponse
+public class LogoutUserResponse : ApiCallResponseBase
 {
     
 }
