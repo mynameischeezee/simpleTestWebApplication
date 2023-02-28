@@ -1,0 +1,11 @@
+global using NUnit.Framework;
+global using moviesStorage.Registration.Exceptions;
+global using Moq;
+global using AutoMapper;
+global using MediatR;
+global using Microsoft.AspNetCore.Identity;
+global using moviesStorage.Registration.Commands;
+global using moviesStorage.Registration.Data;
+global using moviesStorage.Registration.Data.Identity;
+global using moviesStorage.Registration.Handlers;
+global using moviesStorage.Registration.Models;

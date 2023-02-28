@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Registration", "movieStorage.Registration\movieStorage.Registration.csproj", "{0763EC7A-95F6-497F-97C2-134C12DA0C67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moviesStorage.Registration", "moviesStorage.Registration\moviesStorage.Registration.csproj", "{0763EC7A-95F6-497F-97C2-134C12DA0C67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.ApiGateway", "movieStorage.ApiGateway\movieStorage.ApiGateway.csproj", "{4F347B47-35A4-4207-9992-DE1CED541C10}"
 EndProject
@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{F4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{B573D1D5-9B7B-4CAA-A59A-DC1602A35CCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Registration.Tests", "movieStorage.Registration.Tests\movieStorage.Registration.Tests.csproj", "{C1C0B752-E019-4C0A-A438-3CA89CAF3780}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moviesStorage.Registration.Tests", "moviesStorage.Registration.Tests\moviesStorage.Registration.Tests.csproj", "{C1C0B752-E019-4C0A-A438-3CA89CAF3780}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieStorage.Registration.IntegrationTests", "movieStorage.Registration.IntegrationTests\movieStorage.Registration.IntegrationTests.csproj", "{F0EDB043-04BC-4719-845B-D89ABA897E80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moviesStorage.Registration.IntegrationTests", "moviesStorage.Registration.IntegrationTests\moviesStorage.Registration.IntegrationTests.csproj", "{F0EDB043-04BC-4719-845B-D89ABA897E80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moviesStorage.IdentityService", "moviesStorage.IdentityService\moviesStorage.IdentityService.csproj", "{CB5D3C10-AABB-467A-A76E-2C0006191F69}"
 EndProject
@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docker", ".docker", "{E4C3
 		.docker\.env.default = .docker\.env.default
 		.docker\.env = .docker\.env
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moviesStorage.IdentityService.IntegrationTests", "moviesStorage.IdentityService.IntegrationTests\moviesStorage.IdentityService.IntegrationTests.csproj", "{647B471A-BB16-4FF5-B91D-82614755E0F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{CB5D3C10-AABB-467A-A76E-2C0006191F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB5D3C10-AABB-467A-A76E-2C0006191F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB5D3C10-AABB-467A-A76E-2C0006191F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{647B471A-BB16-4FF5-B91D-82614755E0F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{647B471A-BB16-4FF5-B91D-82614755E0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{647B471A-BB16-4FF5-B91D-82614755E0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{647B471A-BB16-4FF5-B91D-82614755E0F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4F347B47-35A4-4207-9992-DE1CED541C10} = {B573D1D5-9B7B-4CAA-A59A-DC1602A35CCE}
@@ -64,5 +70,6 @@ Global
 		{C1C0B752-E019-4C0A-A438-3CA89CAF3780} = {1EF0C8EE-3DF0-40FD-98E4-18A866E825B4}
 		{8527282D-0B90-4E32-AA3D-B9C229B33410} = {F46A814C-545D-4C41-902C-9D9B658D18EF}
 		{CB5D3C10-AABB-467A-A76E-2C0006191F69} = {8527282D-0B90-4E32-AA3D-B9C229B33410}
+		{647B471A-BB16-4FF5-B91D-82614755E0F3} = {8527282D-0B90-4E32-AA3D-B9C229B33410}
 	EndGlobalSection
 EndGlobal
