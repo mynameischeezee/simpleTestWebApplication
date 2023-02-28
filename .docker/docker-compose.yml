@@ -1,18 +1,21 @@
 version: "3.8"
 services:
+  registration-service:
+    container_name: REGISTRATION-SERVICE
+    build:
+      context: ..
+      dockerfile: ./movieStorage.Registration/Dockerfile
+    depends_on: [ sql-server-db ]
+    ports:
+      - "5001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${SERVICE_PROD_ENV}
   sql-server-db:
-    container_name: SQLSERVERINSTANCE
-    #for M1 chip base image can be changed to:
-    #image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: MS-SQLSERVER
+    hostname: sql-server-db
     image: mcr.microsoft.com/mssql/server:2022-latest 
     ports:
       - "1433:1433"
     environment:
       SA_PASSWORD: ${SQL_DB_PASS}
       ACCEPT_EULA: ${SQL_ELUA}
-    # TODO: 
-    #Identity-service
-    #Gateway
-    #Api-service
-    #front?
-    #Service bus
